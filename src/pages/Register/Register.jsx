@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { api } from "../../api";
 
-export default function SignUp() {
+export default function Register() {
   const navigate = useNavigate();
   const { setCurrentUser } = useContext(AuthContext);
 
@@ -26,7 +26,7 @@ export default function SignUp() {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">DogStore</span>
+        <span className="logo">Магазин</span>
         <span className="title">Регистрация</span>
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Имя" />

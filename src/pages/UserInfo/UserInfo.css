@@ -1,0 +1,51 @@
+.info__title {
+    padding: 40px;
+    text-align: center;
+    color: #181818;
+    font-size: 24px;
+    letter-spacing: 1%;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+  .user__info {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 0 auto;
+    width: 500px;
+    justify-content: center;
+  }
+  .user__info div {
+    font-size: 23px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgb(204, 183, 156);
+  }
+
+  .about p {
+    color: black;
+    font-size: 23px;
+    font-weight: normal;
+    margin-bottom: 0;
+  }
+
+  .info {
+    position: relative;
+  }
+
+  .photo img {
+    width: 500px;
+  }
+  
+  .back__button {
+    position: absolute;
+    left: 128vh;
+    top: 10px;
+    background-color: rgba(37, 113, 175, 0.8);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px 10px 20px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+  }

@@ -34,25 +34,10 @@ export default function Home() {
     <>
       <div className="container">
         <div className="content">
-          {status === "error" ? (
-            <div className="content__error">
-              <h2>
-                Ничего не найден<span>😕</span>
-              </h2>
-              <p>
-                Вероятней всего, произошла ошибка.
-                <br />
-                Попробуйте повторить попытку позже.
-              </p>
-            </div>
-          ) : (
-            <>
               <h2 className="content__title">Все товары ({items.total})</h2>
               <div className="content__items">
                 {status === "loading" ? skeletons : products}
               </div>
-            </>
-          )}
         </div>
       </div>
     </>

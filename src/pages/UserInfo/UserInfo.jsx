@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import "./UserInfo.css"
 
 export default function UserInfo() {
   const { currentUser } = useContext(AuthContext);
@@ -9,7 +10,7 @@ export default function UserInfo() {
   return (
     <div className="info">
       <Link to={"/"}>
-        <div className="back">Назад</div>
+        <div className="back__button">Назад</div>
       </Link>
       <div className="info__title">Личный кабинет</div>
       <div className="user__info">
