@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
         <div className="header">
         <div className="container">
           <div className="header__logo">
-            <img width="38" src={logoSvg} alt="dog logo" />
+            <img src={logoSvg} alt="dog logo" />
             <div>
               <h1>Магазин</h1>
             </div>
