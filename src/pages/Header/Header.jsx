@@ -15,11 +15,15 @@ import { Link } from "react-router-dom"
               <h1>Магазин</h1>
             </div>
           </div>
-          <Link to={"userinfo"}>
             <div className="user__logo">
-              <button>Профиль</button>
+            <Link to={"userinfo"}>
+            <button>Профиль</button>
+            </Link>
+            <Link to={"login"}>
+              <button>Выйти</button>
+            </Link>
             </div>
-          </Link>
+         
           
         </div>
       </div>
