@@ -10,16 +10,17 @@ import Header from "./pages/Header/Header";
 import Footer from "./pages/Footer/Footer"
 import NotFound from "./pages/NotFound/NotFound";
 
+
 const ProtectedRoute = ({ children }) => {
-  const { currentUser } = useContext(AuthContext);
   if (localStorage.getItem("token")) {
     return children;
-  }
-  if (!currentUser) {
+  } else {
     return <Navigate to={"/login"} />;
   }
-  return children;
 };
+
+
+
 
 function App() {
  

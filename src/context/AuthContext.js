@@ -18,8 +18,7 @@ export const AuthContextProvider = ({ children }) => {
         }
       );
       const responce = await res.json();
-      setCurrentUser(responce);
-      
+      setCurrentUser(responce);    
     };
     fetchData();
   }, []);

@@ -2,43 +2,69 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { api } from "../../api";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+
+let validateSchema = Yup.object({
+  email: Yup.string()
+  .email()
+  .required('Введите e-mail'),
+  password: Yup.string()
+  .required('Введите пароль') 
+  .min(8, 'Минимальное количество символов 8.'),
+  name: Yup.string()
+  .required('Введите имя'),
+  group: Yup.string()
+  .required('Введите группу'),
+});
 
 export default function Register() {
   const navigate = useNavigate();
   const { setCurrentUser } = useContext(AuthContext);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const name = e.target[0].value;
-    const email = e.target[1].value;
-    const group = e.target[2].value;
-    const password = e.target[3].value;
-    const obj = { name, email, group, password };
-      const res = await api.reg(obj)
-      const responce = await res.json();
-      setCurrentUser(responce);
-      if (res.ok) {
-        navigate("/");
-      }
+  const initialValues = {
+    email: '',
+    password: '',
+    name: '',
+    group: ''
   };
- //проработать ошибки при переходе на TanStack
- 
+
+  const handleSubmit = async (values) => {
+    const res = await api.reg(values);
+    const responce = await res.json();
+    setCurrentUser(responce);
+    if (res.ok) {
+      navigate("/");
+    }
+  };
+  //проработать ошибки при переходе на TanStack
+
   return (
-    <div className="formContainer">
-      <div className="formWrapper">
+  <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={validateSchema}
+      >
+        <Form>
+        <div className="formContainer">
+        <div className="formWrapper">
         <span className="logo">Магазин</span>
         <span className="title">Регистрация</span>
-        <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="Имя" />
-          <input type="email" placeholder="Email" />
-          <input type="text" placeholder="Группа" />
-          <input type="password" placeholder="Пароль" />
-          <button>Зарегистрироваться</button>
-        </form>
-        <p>
+          <Field name="name" placeholder="Имя" type="name" />
+          <ErrorMessage name="name" component='p' />
+          <Field name="email" placeholder="email" type="Email" />
+          <ErrorMessage name="email" component='p' />
+          <Field name="group" placeholder="Группа" type="group" />
+          <ErrorMessage name="group" component='p' />
+          <Field name="password" placeholder="Пароль" type="password" />
+          <ErrorMessage name="password" component='p'/>
+          <button type="submit">Войти</button>
+          <p>
           Уже есть аккаунт? <Link to="/login">Войти</Link>
-        </p>
-      </div>
-    </div>
+          </p>
+          </div>
+          </div>
+        </Form>
+      </Formik>
   );
 }
