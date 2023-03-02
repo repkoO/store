@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
-import { api } from "../../api.js";
+import { api } from "../../api/api.js";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useMutation } from "@tanstack/react-query";
+import { MyLoader } from "../../components/MyLoader/MyLoader.jsx";
 
 let validateSchema = Yup.object({
   email: Yup.string()
@@ -14,29 +15,38 @@ let validateSchema = Yup.object({
   .min(8, "Минимальное количество символов 8."),
 });
 
-export default function Login() {
+export const Login = () => {
   const navigate = useNavigate();
-  const { setCurrentUser } = useContext(AuthContext);
-
+  
   const initialValues = {
     email: "",
     password: ""
   };
 
-  const handleSubmit = async (values) => {
-    const res = await api.auth(values);
-    const responce = await res.json();
-    setCurrentUser(responce);
-    localStorage.setItem("token", responce.token);
-    if (res.ok) {
-      navigate("/");
+    const {mutateAsync: regSignUp, isLoading, isError, error} = useMutation({
+      mutationFn: async(values) => {
+        const res = await api.auth(values);
+        const responce = await res.json();
+        localStorage.setItem("token", responce.token);
+        if (res.ok) {
+          navigate("/");
+          }
+        return responce;
+      }
+    })
+    
+    if (isLoading) return <MyLoader />
+
+    if (isError) return <p>Error happened : {error.message}</p>
+
+    const handleSingIn = async (values) => {
+      await regSignUp(values)
     }
-    //проработать ошибки при переходе на TanStack
-  };
+
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit}
+      onSubmit={handleSingIn}
       validationSchema={validateSchema}
     >
       <Form>

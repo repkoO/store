@@ -4,14 +4,11 @@ import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import "./UserInfo.css"
 
-export default function UserInfo() {
+export const UserInfo = () => {
   const { currentUser } = useContext(AuthContext);
 
   return (
     <div className="info">
-      <Link to={"/"}>
-        <div className="back__button">Назад</div>
-      </Link>
       <div className="info__title">Личный кабинет</div>
       <div className="user__info">
         <div className="user__name">
@@ -36,6 +33,9 @@ export default function UserInfo() {
             <img src={currentUser?.avatar} alt="" />
           </p>
         </div>
+        <Link to={"/"}>
+        <button className="back__button">Назад</button>
+        </Link>
       </div>
     </div>
   );

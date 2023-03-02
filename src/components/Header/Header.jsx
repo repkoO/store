@@ -4,7 +4,11 @@ import { Link } from "react-router-dom"
  import './Header.css'
 
  
- export default function Header () {
+ export const Header = () => {
+
+  const handleExit = () => {
+    localStorage.removeItem('token')
+  }
  
     return (
         <div className="header">
@@ -23,7 +27,7 @@ import { Link } from "react-router-dom"
             <button>Профиль</button>
             </Link>
             <Link to={"login"}>
-              <button>Выйти</button>
+              <button onClick={handleExit}>Выйти</button>
             </Link>
             </div>          
         </div>

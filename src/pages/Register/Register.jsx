@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
-import { api } from "../../api";
+import { api } from "../../api/api";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { useMutation } from "@tanstack/react-query";
+import { MyLoader } from "../../components/MyLoader/MyLoader";
 
 let validateSchema = Yup.object({
   email: Yup.string()
@@ -18,9 +19,8 @@ let validateSchema = Yup.object({
   .required('Введите группу'),
 });
 
-export default function Register() {
+export const Register = () => {
   const navigate = useNavigate();
-  const { setCurrentUser } = useContext(AuthContext);
 
   const initialValues = {
     email: '',
@@ -29,20 +29,28 @@ export default function Register() {
     group: ''
   };
 
-  const handleSubmit = async (values) => {
-    const res = await api.reg(values);
-    const responce = await res.json();
-    setCurrentUser(responce);
+  const {mutateAsync: regSignIn, isLoading, isError, error} = useMutation({
+    mutationFn: async (values) => await api.reg(values)
+    }
+)
+
+  if (isLoading) return <MyLoader />
+
+  if (isError) return <p>Error happened : {error.message}</p>
+
+  const handleSingUp = async (values) => {
+    const res = await regSignIn(values)
     if (res.ok) {
       navigate("/");
     }
-  };
-  //проработать ошибки при переходе на TanStack
+  }
 
+  //не работает навигация
+  
   return (
   <Formik
         initialValues={initialValues}
-        onSubmit={handleSubmit}
+        onSubmit={handleSingUp}
         validationSchema={validateSchema}
       >
         <Form>

@@ -1,22 +1,12 @@
 import { createContext, useState, useEffect } from "react";
-
+import { api } from "../api/api";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(
-        "https://api.react-learning.ru/v2/9-gr/users/me",
-        {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        }
-      );
+      const res = await api.getUserInfo();
       const responce = await res.json();
       setCurrentUser(responce);    
     };

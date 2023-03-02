@@ -1,13 +1,13 @@
 import React from "react";
 import './Product.css'
 
-export default function Product({
+export const Product = ({
   price,
   pictures,
   name,
   available,
   discount,
-}) {
+})  => {
   return (
     <div className="block">
       <img className="block__image" src={pictures} alt="some" />

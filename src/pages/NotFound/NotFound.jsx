@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './NotFound.css'
 
-export default function NotFound () {
+export const NotFound = () => {
     
     return (
         <div className="not__found">

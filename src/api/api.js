@@ -40,6 +40,19 @@ class Api {
         })
       }
 
+      //полчение информации о пользователе
+      getUserInfo() {
+        return fetch(`${this.url}/v2/9-gr/users/me`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          })
+      }
+
 }
 
 const api = new Api('9-gr');
