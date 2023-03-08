@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
  
  export const Header = () => {
 
+  const token = localStorage.getItem('token');
   const handleExit = () => {
     localStorage.removeItem('token')
   }
@@ -15,19 +16,16 @@ import { Link } from "react-router-dom"
         <div className="container">
           <div className="header__logo">
             <img src={logoSvg} alt="dog logo" />
-            <div>
-              <h1>Магазин</h1>
+            <div className="header__link">
+              <Link to={'/'}><h1>Магазин</h1></Link>
             </div>
-            {/* <div className="search">
-            <input className="search_input"></input>
-            </div> */}
           </div>
             <div>
             <Link to={"userinfo"}>
-            <button>Профиль</button>
+              {token ? <button>Профиль</button> : false }
             </Link>
             <Link to={"login"}>
-              <button onClick={handleExit}>Выйти</button>
+              {token ? <button onClick={handleExit}>Выйти</button> : false }
             </Link>
             </div>          
         </div>

@@ -11,6 +11,11 @@
     display: flex;
 }
 
+.header__link {
+    text-decoration: none;
+    
+}
+
 .header__logo img {
     margin-right: 15px;
     width: 100px;

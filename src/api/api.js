@@ -29,8 +29,8 @@ class Api {
       }
 
       //получение всех продуктов
-      getProducts(token){
-        return fetch(`${this.url}/products`, {
+      async getProducts(token){
+        const res = await fetch(`${this.url}/products`, {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
@@ -38,6 +38,7 @@ class Api {
             'Authorization': 'Bearer ' + token,
           },
         })
+        return res.json()
       }
 
       //полчение информации о пользователе

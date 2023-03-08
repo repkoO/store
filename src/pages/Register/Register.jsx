@@ -41,7 +41,7 @@ export const Register = () => {
   const handleSingUp = async (values) => {
     const res = await regSignIn(values)
     if (res.ok) {
-      navigate("/");
+      navigate("/login");
     }
   }
 

@@ -1,11 +1,23 @@
 import React from "react";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import "./UserInfo.css"
+import { useQuery } from "@tanstack/react-query";
+import { api } from "../../api/api";
+import { MyLoader } from "../../components/MyLoader/MyLoader";
 
 export const UserInfo = () => {
-  const { currentUser } = useContext(AuthContext);
+
+  const { data: items, isLoading, isError, error } = useQuery({
+    queryKey: ["user-info"],
+    queryFn: () => api.getUserInfo()
+    .then(res => res.json()),
+  });
+
+  if (isLoading) return <MyLoader />
+
+  if (isError) return <p>Error happened : {error.message}</p>
+
+   
 
   return (
     <div className="info">
@@ -13,24 +25,24 @@ export const UserInfo = () => {
       <div className="user__info">
         <div className="user__name">
           <span>Имя: </span>
-          {currentUser?.name}
+          {items.name}
         </div>
         <div className="user__email">
           <span>Email: </span>
-          {currentUser?.email}
+          {items.email}
         </div>
         <div className="user__group">
           <span>Группа: </span>
-          {currentUser?.group}
+          {items.group}
         </div>
         <div className="about">
           <span>Дополнительная информация: </span>
-          <p>{currentUser?.about}</p>
+          <p>{items.about}</p>
         </div>
         <div className="photo">
           <span>Аватар: </span>
           <p>
-            <img src={currentUser?.avatar} alt="" />
+            <img src={items.avatar} alt="" />
           </p>
         </div>
         <Link to={"/"}>
