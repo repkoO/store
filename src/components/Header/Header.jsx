@@ -1,7 +1,8 @@
 
 import { Link } from "react-router-dom"
- import logoSvg from "../../assets/logo.jpg"
- import './Header.css'
+import logoSvg from "../../assets/logo.jpg"
+import { Search } from "../Search/Search";
+import './Header.css'
 
  
  export const Header = () => {
@@ -20,6 +21,9 @@ import { Link } from "react-router-dom"
               <Link to={'/'}><h1>Магазин</h1></Link>
             </div>
           </div>
+          <div>
+            <Search />
+            </div>
             <div>
             <Link to={"userinfo"}>
               {token ? <button>Профиль</button> : false }

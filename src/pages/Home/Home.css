@@ -22,3 +22,8 @@
 .header__logo p {
     color: #7b7b7b;
 }
+
+.search {
+    display: flex;
+    justify-content: center;
+}

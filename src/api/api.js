@@ -1,3 +1,5 @@
+
+
 class Api {
     constructor(groupId) {
       this.url = "https://api.react-learning.ru";
@@ -40,6 +42,21 @@ class Api {
         })
         return res.json()
       }
+
+      //поиск
+
+      async getSearchProduct(search, token) {
+        const res = await fetch(`${this.url}/products?query=${search}`, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+          },
+        })
+        return res.json()
+      }
+
 
       //полчение информации о пользователе
       getUserInfo() {

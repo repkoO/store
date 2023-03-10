@@ -8,6 +8,7 @@ import { Header } from "./components/Header/Header"
 import { Footer } from "./components/Footer/Footer"
 import { NotFound } from "./pages/NotFound/NotFound";
 
+
 export const App = () => {
   const location = useLocation()
 
