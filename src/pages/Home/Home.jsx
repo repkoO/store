@@ -24,8 +24,8 @@ export const Home = () => {
           <div className="search">
           </div>
               <h2 className="content__title">Все товары ({items?.total})</h2>
+              {items?.total === 0 ? <p>Товары отсутствуют</p> : null}
               <div className="content__items">
-              
                 {isLoading ? <MyLoader /> : items.products.map((products) => {
                 return <Product key={products._id} {...products} />;
                 })}
