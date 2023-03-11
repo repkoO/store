@@ -21,8 +21,8 @@ import './Header.css'
               <Link to={'/'}><h1>Магазин</h1></Link>
             </div>
           </div>
-          <div>
-            <Search />
+            <div>
+            {token ? <Search /> : false}
             </div>
             <div>
             <Link to={"userinfo"}>
