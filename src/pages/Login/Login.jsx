@@ -5,6 +5,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useMutation } from "@tanstack/react-query";
 import { MyLoader } from "../../components/MyLoader/MyLoader.jsx";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/slices/userSlice.js";
 
 let validateSchema = Yup.object({
   email: Yup.string()
@@ -17,6 +19,7 @@ let validateSchema = Yup.object({
 
 export const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   
   const initialValues = {
     email: "",
@@ -27,11 +30,11 @@ export const Login = () => {
       mutationFn: async(values) => {
         const res = await api.auth(values);
         const responce = await res.json();
-        localStorage.setItem("token", responce.token);
-        if (res.ok) {
-          navigate("/");
-          }
-        return responce;
+        dispatch(setUser({
+          ...responce.data,
+          token: responce.token
+        }))
+        return navigate("/");
       }
     })
     
@@ -39,7 +42,7 @@ export const Login = () => {
 
     if (isError) return <p>Error happened : {error.message}</p>
 
-    const handleSingIn = async (values) => {
+    const onSubmit = async (values) => {
       await regSignUp(values)
     }
 
@@ -48,7 +51,7 @@ export const Login = () => {
     
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSingIn}
+      onSubmit={onSubmit}
       validationSchema={validateSchema}
     >
       <Form>

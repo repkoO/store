@@ -7,12 +7,14 @@ import { UserInfo } from "./pages/UserInfo/UserInfo"
 import { Header } from "./components/Header/Header"
 import { Footer } from "./components/Footer/Footer"
 import { NotFound } from "./pages/NotFound/NotFound";
+import { useSelector } from "react-redux";
 
 
 export const App = () => {
   const location = useLocation()
+  const {token} = useSelector(state => state.user)
 
-  if (!localStorage.getItem("token")) {
+  if (!token) {
     if(location.pathname === '/' || location.pathname === '/userinfo') {
       return <Navigate to={'/login'} />
     }

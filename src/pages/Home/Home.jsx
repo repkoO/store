@@ -5,16 +5,16 @@ import { api } from "../../api/api";
 import './Home.css'
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import { getSearchSelector } from "../../components/redux/slices/filterSlice";
+import { getSearchSelector } from "../../redux/slices/filterSlice";
 
 export const Home = () => {
 
   const searchState = useSelector(getSearchSelector);
-  const token = localStorage.getItem('token');  
+  const {token} = useSelector(state => state.user) 
 
   const { data: items, isLoading} = useQuery({
     queryKey: ["searchProducts", searchState],
-    queryFn: () => api.getSearchProduct(searchState, token),
+    queryFn: async () => await api.getSearchProduct(searchState, token),
   });
 
   return (
@@ -26,8 +26,8 @@ export const Home = () => {
               <h2 className="content__title">Все товары ({items?.total})</h2>
               {items?.total === 0 ? <p>Товары отсутствуют</p> : null}
               <div className="content__items">
-                {isLoading ? <MyLoader /> : items.products.map((products) => {
-                return <Product key={products._id} {...products} />;
+              {isLoading ? <MyLoader /> : items.products.map((product) => {
+                return <Product key={product._id} products={product} />;
                 })}
               </div>
         </div>

@@ -1,23 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./UserInfo.css"
-import { useQuery } from "@tanstack/react-query";
-import { api } from "../../api/api";
-import { MyLoader } from "../../components/MyLoader/MyLoader";
+import { useSelector } from "react-redux";
+import { getUserInfoSelector } from "../../redux/slices/userSlice";
 
 export const UserInfo = () => {
-
-  const { data: items, isLoading, isError, error } = useQuery({
-    queryKey: ["user-info"],
-    queryFn: () => api.getUserInfo()
-    .then(res => res.json()),
-  });
-
-  if (isLoading) return <MyLoader />
-
-  if (isError) return <p>Error happened : {error.message}</p>
-
-   
+  const profileInf = useSelector(getUserInfoSelector)
 
   return (
     <div className="info">
@@ -25,24 +13,24 @@ export const UserInfo = () => {
       <div className="user__info">
         <div className="user__name">
           <span>Имя: </span>
-          {items.name}
+          {profileInf.name}
         </div>
         <div className="user__email">
           <span>Email: </span>
-          {items.email}
+          {profileInf.email}
         </div>
         <div className="user__group">
           <span>Группа: </span>
-          {items.group}
+          {profileInf.group}
         </div>
         <div className="about">
           <span>Дополнительная информация: </span>
-          <p>{items.about}</p>
+          <p>{profileInf.about}</p>
         </div>
         <div className="photo">
           <span>Аватар: </span>
           <p>
-            <img src={items.avatar} alt="" />
+            <img src={profileInf.avatar} alt="" />
           </p>
         </div>
         <Link to={"/"}>

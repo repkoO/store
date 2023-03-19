@@ -38,7 +38,7 @@ export const Register = () => {
 
   if (isError) return <p>Error happened : {error.message}</p>
 
-  const handleSingUp = async (values) => {
+  const handleSingIn = async (values) => {
     const res = await regSignIn(values)
     if (res.ok) {
       navigate("/login");
@@ -50,7 +50,7 @@ export const Register = () => {
   return (
   <Formik
         initialValues={initialValues}
-        onSubmit={handleSingUp}
+        onSubmit={handleSingIn}
         validationSchema={validateSchema}
       >
         <Form>

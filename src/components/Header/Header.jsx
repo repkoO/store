@@ -1,15 +1,18 @@
 
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom"
 import logoSvg from "../../assets/logo.jpg"
+import { removeUser } from "../../redux/slices/userSlice";
 import { Search } from "../Search/Search";
 import './Header.css'
 
  
  export const Header = () => {
+  const dispatch = useDispatch();
+  const { token } = useSelector(state => state.user)
 
-  const token = localStorage.getItem('token');
   const handleExit = () => {
-    localStorage.removeItem('token')
+    dispatch(removeUser())
   }
  
     return (
@@ -22,16 +25,12 @@ import './Header.css'
             </div>
           </div>
             <div>
-            {token ? <Search /> : false}
+            {token && <Search />}
             </div>
-            <div>
-            <Link to={"userinfo"}>
-              {token ? <button>Профиль</button> : false }
-            </Link>
-            <Link to={"login"}>
-              {token ? <button onClick={handleExit}>Выйти</button> : false }
-            </Link>
-            </div>          
+            <div className='some__buttons'>
+            { token && <Link to={"userinfo"}> <button>Профиль</button></Link> }
+            { token && <Link to={"login"}> <button onClick={handleExit}>Выйти</button></Link> }  
+            </div>
         </div>
       </div>
     )
