@@ -7,6 +7,10 @@
     border-radius: 10px;
   }
 
+  .block:hover {
+    box-shadow: 5px 5px 5px 5px  rgba(0, 0, 255, .2);;
+  }
+
   
 .block__image {
     width: 180px;

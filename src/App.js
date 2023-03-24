@@ -8,6 +8,8 @@ import { Header } from "./components/Header/Header"
 import { Footer } from "./components/Footer/Footer"
 import { NotFound } from "./pages/NotFound/NotFound";
 import { useSelector } from "react-redux";
+import { ProductId } from "./pages/ProductId/ProductId";
+import { Cart } from "./pages/Cart/Cart";
 
 
 export const App = () => {
@@ -33,6 +35,8 @@ export const App = () => {
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
         <Route path="userinfo" element={<UserInfo />} />
+        <Route path="products/:productID" element={<ProductId />} />
+        <Route path="cart" element={<Cart />} />
         <Route path="*" element={<NotFound />}/>
       </Routes>
       <Footer />

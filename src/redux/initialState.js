@@ -16,6 +16,7 @@ export const myInitialState = {
         email: '',
         group: '',
         __v: 0,
-    }
+    },
+    cart: []
 }
 

@@ -14,7 +14,7 @@ export const Home = () => {
 
   const { data: items, isLoading} = useQuery({
     queryKey: ["searchProducts", searchState],
-    queryFn: async () => await api.getSearchProduct(searchState, token),
+    queryFn:  () => api.getSearchProduct(searchState, token)
   });
 
   return (

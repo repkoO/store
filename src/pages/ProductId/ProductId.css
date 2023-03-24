@@ -1,0 +1,16 @@
+.product__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.product__img {
+    width: 350px;
+}
+
+.product__name {
+    width: 150px;
+    font-size: 15px;
+}

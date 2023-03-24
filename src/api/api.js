@@ -43,6 +43,18 @@ class Api {
         return res.json()
       }
 
+      async getProductId(id, token){
+        const res = await fetch(`${this.url}/products/${id}`, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+          },
+        })
+        return res.json()
+      }
+
       //поиск
 
       async getSearchProduct(search, token) {
@@ -70,6 +82,19 @@ class Api {
             },
           })
       }
+
+      //корзина
+
+      getProductsByIds(ids, token) {
+        return Promise.all(ids.map((id) => fetch(`${this.baseURL}/products/${id}`, {
+        headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token,
+          },
+        }).then((res) => res.json())))
+      }
+
 
 }
 
