@@ -20,7 +20,7 @@ export const ProductId = () => {
       <img className="product__img" src={product?.pictures} alt="some" />
       <h4 className="product__name">{product?.name}</h4>
       <h4 className="product__name">{product?.description}</h4>
-      <div className="">
+      <div className="product__stocks">
         <ul>
           <li>{product?.available ? "Есть в наличии" : "Товар закончился"}</li>
         </ul>

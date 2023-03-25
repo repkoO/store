@@ -1,11 +1,13 @@
+import './cartItem.css'
 export const CartItem = ({product}) => {
 
     return (
-<div className="product__info">
-      <img className="product__img" src={product?.pictures} alt="some" />
-      <h4 className="product__name">{product?.name}</h4>
-      <h4 className="product__name">{product?.description}</h4>
-      <div className="">
+      <>
+    <div className="cart__info">
+      <img className="cart__img" src={product?.pictures} alt="some" />
+      <h4 className="cart__name">{product?.name}</h4>
+      <h4 className="cart__name">{product?.description}</h4>
+      <div className="cart__stocks">
         <ul>
           <li>{product?.available ? "Есть в наличии" : "Товар закончился"}</li>
         </ul>
@@ -17,5 +19,6 @@ export const CartItem = ({product}) => {
         <div className="">{product?.price} ₽</div>
       </div>
     </div>
+    </>
 )
 }

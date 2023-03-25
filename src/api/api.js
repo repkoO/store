@@ -85,15 +85,15 @@ class Api {
 
       //корзина
 
-      getProductsByIds(ids, token) {
-        return Promise.all(ids.map((id) => fetch(`${this.baseURL}/products/${id}`, {
+      getProductsByIds(id, token) {
+        return fetch(`https://api.react-learning.ru/products/${id}`, {
         headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ' + token,
-          },
-        }).then((res) => res.json())))
-      }
+          }
+      })
+    }
 
 
 }
