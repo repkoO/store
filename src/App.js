@@ -10,6 +10,7 @@ import { NotFound } from "./pages/NotFound/NotFound";
 import { useSelector } from "react-redux";
 import { ProductId } from "./pages/ProductId/ProductId";
 import { Cart } from "./pages/Cart/Cart";
+import { Favorites } from "./pages/Favorites/Favorites";
 
 
 export const App = () => {
@@ -37,6 +38,7 @@ export const App = () => {
         <Route path="userinfo" element={<UserInfo />} />
         <Route path="products/:productID" element={<ProductId />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="favorites" element={<Favorites />} />
         <Route path="*" element={<NotFound />}/>
       </Routes>
       <Footer />

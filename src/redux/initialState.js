@@ -17,6 +17,7 @@ export const myInitialState = {
         group: '',
         __v: 0,
     },
-    cart: []
+    cart: [],
+    favorites: []
 }
 

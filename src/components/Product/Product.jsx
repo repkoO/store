@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../../redux/slices/cartSlice";
+import { addToFavorites } from "../../redux/slices/favoritesSlice";
 import './Product.css'
 
 export const Product = ({ products })  => {
@@ -11,9 +12,8 @@ export const Product = ({ products })  => {
   return (
     <div className="block"
     style={{cursor: 'pointer'}}
-    onClick={(ev) => {
+    onClick={() => {
       navigate(`../products/${products._id}`)
-      ev.stopPropagation()
     }}
     >
       <img className="block__image" src={products.pictures} alt="some" />
@@ -28,8 +28,22 @@ export const Product = ({ products })  => {
       </div>
       <div className="block__bottom">
         <div className="block__price">{products.price} ₽</div>
-        <button onClick={()=>dispatch(addToCart(products._id))}>В корзину</button>
       </div>
+      <button 
+      onClick={(e)=> {
+        dispatch(addToCart(products._id))
+        e.stopPropagation();
+          }
+        }>
+          В корзину
+      </button>
+        <button onClick={(e)=> {
+          dispatch(addToFavorites(products._id))
+          e.stopPropagation();
+        }
+          }>
+            В избранное
+      </button>
     </div>
   );
 }

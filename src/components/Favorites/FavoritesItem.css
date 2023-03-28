@@ -18,12 +18,3 @@
 .cart__stocks {
     margin-right: 20px;
 }
-
-.cart__price_count {
-    padding-right: 10px;
-}
-
-.cart__button {
-    display: flex;
-    flex-direction: column;
-}

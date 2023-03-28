@@ -11,6 +11,7 @@ import './Header.css'
   const dispatch = useDispatch();
   const { token } = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
+  const favorites = useSelector(state => state.favorites)
   const handleExit = () => {
     dispatch(removeUser())
   }
@@ -28,6 +29,7 @@ import './Header.css'
             {token && <Search />}
             </div>
             <div className='some__buttons'>
+            { token && <NavLink to={"favorites"}> <button>Избранное({favorites.length})</button></NavLink> }
             { token && <NavLink to={"cart"}> <button>Корзина({cart.length})</button></NavLink> }
             { token && <NavLink to={"userinfo"}> <button>Профиль</button></NavLink> }
             { token && <NavLink to={"login"}> <button onClick={handleExit}>Выйти</button></NavLink> }  

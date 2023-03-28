@@ -96,6 +96,21 @@ class Api {
     }
 
 
+    //избранное
+
+    getProductsByIdsFav(id, token) {
+      return fetch(`https://api.react-learning.ru/products/${id}`, {
+      headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token,
+        }
+    })
+  }
+
+    
+
+
 }
 
 const api = new Api('9-gr');

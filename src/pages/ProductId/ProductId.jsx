@@ -1,14 +1,17 @@
 import { useQuery } from "@tanstack/react-query"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { api } from "../../api/api"
+import { addToCart } from "../../redux/slices/cartSlice"
+import { addToFavorites } from "../../redux/slices/favoritesSlice"
 import { getUserInfoSelector } from "../../redux/slices/userSlice"
 import './ProductId.css'
 
-export const ProductId = () => {
+export const ProductId = ({products}) => {
 
     const { productID } = useParams()
     const {token} = useSelector(getUserInfoSelector)
+    const dispatch = useDispatch()
 
     const {data: product} = useQuery({
         queryKey: ['product', productID],
@@ -30,6 +33,14 @@ export const ProductId = () => {
       </div>
       <div className="">
         <div className="">{product?.price} ₽</div>
+      </div>
+      <div className="button_container">
+        <div className="button_cart">
+        <button onClick={()=>dispatch(addToCart(product?._id))}>В корзину</button>
+        </div>
+        <div className="button_favorites">
+        <button onClick={()=>dispatch(addToFavorites(product?._id))}>В избранное</button>
+        </div>
       </div>
     </div>
     )
