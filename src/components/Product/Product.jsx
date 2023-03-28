@@ -29,7 +29,7 @@ export const Product = ({ products })  => {
       <div className="block__bottom">
         <div className="block__price">{products.price} ₽</div>
       </div>
-      <button 
+      <button className="style__buttons"
       onClick={(e)=> {
         dispatch(addToCart(products._id))
         e.stopPropagation();
@@ -37,7 +37,8 @@ export const Product = ({ products })  => {
         }>
           В корзину
       </button>
-        <button onClick={(e)=> {
+        <button className="style__buttons"
+        onClick={(e)=> {
           dispatch(addToFavorites(products._id))
           e.stopPropagation();
         }

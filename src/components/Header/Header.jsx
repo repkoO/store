@@ -29,8 +29,8 @@ import './Header.css'
             {token && <Search />}
             </div>
             <div className='some__buttons'>
-            { token && <NavLink to={"favorites"}> <button>Избранное({favorites.length})</button></NavLink> }
-            { token && <NavLink to={"cart"}> <button>Корзина({cart.length})</button></NavLink> }
+            { token && <NavLink to={"favorites"}> <button>Избранное {favorites.length === 0 ? null : favorites.length}</button></NavLink> }
+            { token && <NavLink to={"cart"}> <button>Корзина {cart.length === 0 ? null : cart.length}</button></NavLink> }
             { token && <NavLink to={"userinfo"}> <button>Профиль</button></NavLink> }
             { token && <NavLink to={"login"}> <button onClick={handleExit}>Выйти</button></NavLink> }  
             </div>

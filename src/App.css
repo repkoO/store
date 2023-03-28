@@ -56,6 +56,11 @@ button {
   margin: 5px;
 }
 
+button:hover {
+background-color: black;
+    transition: ease-in 0.3s;
+  }
+
 .button__cart {
   margin: 0 0 10px 12px;
 }
