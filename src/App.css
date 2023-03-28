@@ -57,7 +57,7 @@ button {
 }
 
 button:hover {
-background-color: black;
+background-color: rgba(0, 0, 0, 0.663);;
     transition: ease-in 0.3s;
   }
 

@@ -58,8 +58,3 @@
     line-height: 27px;
     letter-spacing: 0.015em;
   }
-
-  .style__buttons:hover {
-    background-color: black;
-    transition: ease-in 0.3s;
-  }
