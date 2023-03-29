@@ -6,6 +6,10 @@
     border: 1px solid rgba(0, 0, 0, 0.137);
 }
 
+.product__title {
+    text-align: center;
+}
+
 .product__img {
     width: 250px;
     padding-left: 10px;

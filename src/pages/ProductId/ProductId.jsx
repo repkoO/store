@@ -19,6 +19,8 @@ export const ProductId = ({products}) => {
     })
     
     return (
+      <>
+      <div className="product__title"><h1>Страница продукта</h1></div>
         <div className="product__info">
       <img className="product__img" src={product?.pictures} alt="some" />
       <h4 className="product__name">{product?.name}</h4>
@@ -43,5 +45,6 @@ export const ProductId = ({products}) => {
         </div>
       </div>
     </div>
+    </>
     )
 }
