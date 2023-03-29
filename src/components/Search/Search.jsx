@@ -33,7 +33,7 @@ export const Search = () => {
       })
     }
 
-    return <input 
+    return <input className="search__input"
     placeholder="Search..."
     value={search} 
     onChange={handleSearch}

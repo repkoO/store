@@ -22,7 +22,7 @@ import './Header.css'
           <div className="header__logo">
             <img src={logoSvg} alt="dog logo" />
             <div className="header__link">
-              <NavLink to={'/'}><h1>Магазин</h1></NavLink>
+              <NavLink style={{textDecoration: 'none'}} to={'/'}><h1>Магазин</h1></NavLink>
             </div>
           </div>
             <div>

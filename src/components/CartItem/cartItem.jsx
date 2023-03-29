@@ -16,14 +16,16 @@ export const CartItem = ({product}) => {
           <li>{product?.discount !== 0 && `Скидка : ${product?.discount} %`}</li>
         </ul>
       </div>
+      <div className="cart__wrapper">
       <div className="cart__price">
         <div className="cart__price_count">Цена: {product?.price} ₽</div>
       </div>
-      <div className="">
+      <div>
         <div className="cart__price_count">Количество: {product?.count}</div>
       </div>
-      <div className="">
+      <div>
         <div className="cart__price_count">Итоговая стоимость: {TotalPrice(product?.count, product?.price, product?.discount)} ₽</div>
+      </div>
       </div>
       <div className="cart__button">
         <button onClick={() => dispatch(incrementProduct(product._id))}>+</button>

@@ -1,6 +1,10 @@
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../redux/slices/cartSlice'
+import { removeFromFavorites } from '../../redux/slices/favoritesSlice'
 import './FavoritesItem.css'
 
 export const FavoritesItem = ({product}) => {
+  const dispatch = useDispatch()
 
     return (
       <>
@@ -18,6 +22,10 @@ export const FavoritesItem = ({product}) => {
       </div>
       <div className="">
         <div className="">{product?.price} ₽</div>
+      </div>
+      <div>
+        <button onClick={() => dispatch(removeFromFavorites(product._id))}> Удалить </button>
+        <button onClick={() => dispatch(addToCart(product._id))}> В корзину </button>
       </div>
     </div>
     </>
