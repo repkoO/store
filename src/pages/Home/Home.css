@@ -1,0 +1,29 @@
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.content__items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-items: center;
+}
+
+
+.content {
+    padding: 40px 0;
+}
+
+.content__title {
+    margin: 35px 0;
+} 
+
+.header__logo p {
+    color: #7b7b7b;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+}

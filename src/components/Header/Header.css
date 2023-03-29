@@ -1,0 +1,49 @@
+.header {
+    border-bottom: 1px solid rgb(204, 183, 156);
+    padding: 20px 0;
+    background-color: rgb(109, 135, 248);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.some__buttons a {
+    text-decoration: none;
+}
+
+.header__logo {
+    display: flex;
+}
+
+.header__logo img {
+    margin-right: 15px;
+    width: 100px;
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo h1 {
+    color: #181818;
+    font-size: 24px;
+    letter-spacing: 1%;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+}
+
+.header__logo a {
+    text-decoration: none;
+}
+
+.button a {
+    text-decoration: none;
+}
+
+.search__input {
+    width: 50vh;
+    border-radius: 10px;
+}
